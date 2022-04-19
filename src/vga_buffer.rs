@@ -2,6 +2,16 @@ use core::fmt;
 use core::fmt::Write;
 use volatile::Volatile;
 
+const CANCER: &str = "+----------------------------------------+
+|   *                                    |
+|                                        |
+|                 *                      |
+|                      *                 |
+|                                     *  |
+|                         *              |
++----------------------------------------+";
+
+
 #[allow(dead_code)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u8)]
@@ -123,6 +133,7 @@ pub fn welcome() {
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     };
     writeln!(writer, "-karkinOS-\n").unwrap();
+    writeln!(writer, "{}", CANCER).unwrap();
 
     let mut writer = Writer {
         column_position: 0,
@@ -132,4 +143,5 @@ pub fn welcome() {
     writeln!(writer, "Then a light among them brightened,").unwrap();
     writeln!(writer, "So that, if Cancer one such crystal had,").unwrap();
     writeln!(writer, "Winter would have a month of only a day.").unwrap();
+    writeln!(writer, "                                 - Dante").unwrap();
 }
