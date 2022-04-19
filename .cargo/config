@@ -1,10 +1,12 @@
 [build]
-target = "x86_64-karkin.json"
+target = "i686-karkin.json"
 
-[target.'cfg(target_os = "none")']
-runner = "bootimage runner"
+[target.i686-karkin]
+runner = "qemu-system-i386 -kernel"
+rustflags = [
+    "-C", "link-arg=-T", "-C", "link-arg=linker.ld",
+]
 
 [unstable]
-# Generate memory-related intrinsics like memcpy
 build-std-features = ["compiler-builtins-mem"]
 build-std = ["core", "compiler_builtins"]

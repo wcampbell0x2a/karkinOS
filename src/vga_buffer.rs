@@ -119,11 +119,16 @@ impl fmt::Write for Writer {
 pub fn welcome() {
     let mut writer = Writer {
         column_position: 0,
-        color_code: ColorCode::new(Color::Yellow, Color::Black),
+        color_code: ColorCode::new(Color::Blue, Color::Black),
         buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
     };
+    writeln!(writer, "-karkinOS-\n").unwrap();
 
-    writeln!(writer, "karkinOS\n").unwrap();
+    let mut writer = Writer {
+        column_position: 0,
+        color_code: ColorCode::new(Color::Green, Color::Black),
+        buffer: unsafe { &mut *(0xb8000 as *mut Buffer) },
+    };
     writeln!(writer, "Then a light among them brightened,").unwrap();
     writeln!(writer, "So that, if Cancer one such crystal had,").unwrap();
     writeln!(writer, "Winter would have a month of only a day.").unwrap();
