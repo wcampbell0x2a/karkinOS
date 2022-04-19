@@ -21,10 +21,6 @@ static multiboot: Multiboot = Multiboot {
     checksum: -(MAGIC + FLAGS),
 };
 
-#[derive(Copy, Clone)]
-#[repr(align(4))]
-pub struct Aligned(u8);
-
 mod vga_buffer;
 
 use vga_buffer::welcome;
