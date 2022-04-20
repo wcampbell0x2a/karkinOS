@@ -1,7 +1,7 @@
 #![no_std]
 #![no_main]
 
-mod multiboot;
+pub mod multiboot_v1;
 
 mod vga_buffer;
 use vga_buffer::welcome;
